@@ -30,7 +30,7 @@ When implementing features, keep the following architecture in mind:
   instantiating them directly inside controllers or views.
 - Never commit secrets, connection strings, or account keys. Read
   configuration (e.g. Azure Storage connection strings) from
-  `appsettings.json` user secrets, environment variables, or Azure Key
+  `appsettings.json`, user secrets, environment variables, or Azure Key
   Vault — never hard-code them.
 - Write clear, descriptive commit messages and keep changes focused and
   minimal.
