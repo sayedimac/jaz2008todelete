@@ -16,8 +16,7 @@ builder.Services.PostConfigure<AzureStorageOptions>(options =>
 {
     if (string.IsNullOrWhiteSpace(options.ConnectionString))
     {
-        options.ConnectionString = builder.Configuration["AZURE_STORAGE_CONNECTION_STRING"]
-            ?? Environment.GetEnvironmentVariable("AZURE_STORAGE_CONNECTION_STRING");
+        options.ConnectionString = builder.Configuration["AZURE_STORAGE_CONNECTION_STRING"];
     }
 });
 
