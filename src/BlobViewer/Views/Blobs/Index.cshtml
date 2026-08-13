@@ -1,0 +1,43 @@
+@model IReadOnlyList<BlobViewer.Models.BlobContainerViewModel>
+@{
+    ViewData["Title"] = "Blob Containers";
+    var notConfigured = ViewBag.NotConfigured as bool? ?? false;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (notConfigured)
+{
+    <div class="alert alert-warning" role="alert">
+        No Azure Storage connection string is configured. Set one of the following before browsing blobs:
+        <ul>
+            <li><code>AzureStorage:ConnectionString</code> in <code>appsettings.json</code> / <code>appsettings.Development.json</code></li>
+            <li>The <code>AzureStorage__ConnectionString</code> environment variable</li>
+            <li>The <code>AZURE_STORAGE_CONNECTION_STRING</code> Azure App Service application setting</li>
+        </ul>
+    </div>
+}
+else if (Model.Count == 0)
+{
+    <p>No containers were found in this storage account.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Container Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var container in Model)
+            {
+                <tr>
+                    <td>@container.Name</td>
+                    <td><a asp-action="Container" asp-route-name="@container.Name">View blobs</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
