@@ -2,4 +2,7 @@
   <Folder Name="/src/">
     <Project Path="src/BlobViewer/BlobViewer.csproj" />
   </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/BlobViewer.Tests/BlobViewer.Tests.csproj" />
+  </Folder>
 </Solution>
