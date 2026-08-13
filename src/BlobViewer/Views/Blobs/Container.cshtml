@@ -1,0 +1,35 @@
+@model BlobViewer.Models.BlobListViewModel
+@{
+    ViewData["Title"] = $"Blobs in {Model.ContainerName}";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p><a asp-action="Index">&larr; Back to containers</a></p>
+
+@if (Model.Blobs.Count == 0)
+{
+    <p>No blobs were found in this container.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Size (bytes)</th>
+                <th>Last Modified</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var blob in Model.Blobs)
+            {
+                <tr>
+                    <td>@blob.Name</td>
+                    <td>@blob.ContentLength</td>
+                    <td>@blob.LastModified</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
